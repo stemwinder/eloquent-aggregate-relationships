@@ -1,5 +1,5 @@
 {
-    "name": "eloquent-aggregate-relationships",
+    "name": "andyfleming/eloquent-aggregate-relationships",
     "type": "library",
     "description": "Provides aggregate relationship helpers.",
     "keywords": [

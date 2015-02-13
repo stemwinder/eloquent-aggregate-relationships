@@ -1,51 +1,82 @@
 <?php namespace AndyFleming\EloquentAggregateRelationships;
 
-trait AggregateRelationshipsTrait {
+use Illuminate\Database\Query\Builder;
+
+trait AggregateRelationshipsTrait
+{
+
+    private function stripNamespace($className)
+    {
+        if (strpos($className, '\\') !== false) {
+            $parts = explode('\\', $className);
+            $className = end($parts);
+        }
+
+        return $className;
+    }
 
     public function generateAggregateAlias($className, $aggregateType)
     {
-        if (strpos($className,'\\') !== false) {
-            $className = end(explode('\\',$className));
-        }
+        $className = $this->stripNamespace($className);
 
-        return snake_case($className).'_'.$aggregateType;
+        return snake_case($className) . '_' . $aggregateType;
     }
 
-    private function aggregateHasMany($aggregateType, $className, $foreignKey=null, $resultAlias=null, $aggregateTargetColumn)
+    public function generateForeignKey()
     {
-        $resultAlias = ($resultAlias)?: $this->generateAggregateAlias($className, $aggregateType);
+        $className = get_called_class();
+        $className = $this->stripNamespace($className);
+        $className = $className.'_id';
 
-        if (!$foreignKey) {
-            $foreignKey = snake_case(get_called_class());
+
+        return snake_case($className);
+    }
+
+    public function validateType($aggregateType)
+    {
+        $validTypes = [
+            'avg',
+            'count',
+            'sum',
+            'min',
+            'max',
+        ];
+
+        if (!in_array($aggregateType, $validTypes)) {
+            throw new InvalidAggregateTypeException('');
         }
+    }
+
+    private function aggregateHasMany($aggregateType, $className, $foreignKey = null, $resultAlias = null, $aggregateTargetColumn)
+    {
+        $this->validateType($aggregateType);
+
+        $resultAlias = $this->generateAggregateAlias($className, $aggregateType);
+        $foreignKey = ($foreignKey) ?: $this->generateForeignKey();
 
         return $this->hasOne($className)
-            ->selectRaw(':foreign_key, count('.$aggregateTargetColumn.') as :aggregate_result_column_name',
-                [
-                    'foreign_key' => $foreignKey,
-                    'aggregate_result_column_name' => $resultAlias
-                ]
-            )
+            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias,[$foreignKey, $aggregateTargetColumn])
             ->groupBy($foreignKey);
     }
 
     /**
-     * @param      $className - example - Comment
-     * @param null $foreignKey - example "article_id"
-     * @param null $countFieldName - example "comments_count"
+     * @param        $className
+     * @param null   $foreignKey
+     * @param null   $countFieldName
+     * @param string $columnToCount - The column you want to count the distinct values in
      *
      * @return mixed
      */
-    protected function countHasMany($className, $foreignKey=null, $countFieldName=null)
+    protected function countHasMany($className, $columnToCount = '*', $foreignKey = null, $countFieldName = null)
     {
 
-        return $this->aggregateHasMany('count', $className, $foreignKey, $countFieldName, '*');
+        return $this->aggregateHasMany('count', $className, $foreignKey, $countFieldName, $columnToCount);
 
     }
 
-    protected function averageHasMany()
+    protected function averageHasMany($className, $columnToAverage, $foreignKey = null, $countFieldName = null)
     {
-        // avg()
+        return $this->aggregateHasMany('avg', $className, $foreignKey, $countFieldName, $columnToAverage);
     }
 
     // min()
