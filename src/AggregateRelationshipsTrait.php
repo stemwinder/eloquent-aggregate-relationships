@@ -84,9 +84,9 @@ trait AggregateRelationshipsTrait
         $resultAlias = $this->generateAggregateAlias($className, $aggregateType);
         $foreignKey = ($foreignKey) ?: $this->generateForeignKey();
 
-//        return $this->hasOne($className)
-//            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias, [$foreignKey, $aggregateTargetColumn])
-//            ->groupBy($foreignKey);
+        return $this->hasOne($className)
+            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias, [$foreignKey, $aggregateTargetColumn])
+            ->groupBy($foreignKey);
     }
 
     /**
