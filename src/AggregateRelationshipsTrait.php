@@ -8,7 +8,7 @@ trait AggregateRelationshipsTrait
 {
 
     /**
-     * @param $className
+     * @param string $className
      *
      * @return mixed
      */
@@ -23,8 +23,8 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param $className
-     * @param $aggregateType
+     * @param string $className
+     * @param string $aggregateType
      *
      * @return string
      */
@@ -42,14 +42,14 @@ trait AggregateRelationshipsTrait
     {
         $className = get_called_class();
         $className = $this->stripNamespace($className);
-        $className = $className.'_id';
+        $className = $className . '_id';
 
 
         return snake_case($className);
     }
 
     /**
-     * @param $aggregateType
+     * @param string $aggregateType
      *
      * @throws InvalidAggregateTypeException
      */
@@ -69,10 +69,10 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param      $aggregateType
-     * @param      $className
-     * @param      $aggregateTargetColumn
-     * @param null $foreignKey
+     * @param string      $aggregateType
+     * @param string      $className
+     * @param string      $aggregateTargetColumn
+     * @param string|null $foreignKey
      *
      * @return mixed
      * @throws InvalidAggregateTypeException
@@ -85,14 +85,14 @@ trait AggregateRelationshipsTrait
         $foreignKey = ($foreignKey) ?: $this->generateForeignKey();
 
         return $this->hasOne($className)
-            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias, [$foreignKey, $aggregateTargetColumn])
+            ->selectRaw('?, ' . $aggregateType . '(?) as ' . $resultAlias, [$foreignKey, $aggregateTargetColumn])
             ->groupBy($foreignKey);
     }
 
     /**
-     * @param        $className
-     * @param string $columnToCount
-     * @param null   $foreignKey
+     * @param string      $className
+     * @param string      $columnToCount
+     * @param string|null $foreignKey
      *
      * @return mixed
      */
@@ -102,9 +102,9 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param      $className
-     * @param      $columnToAverage
-     * @param null $foreignKey
+     * @param string      $className
+     * @param string      $columnToAverage
+     * @param string|null $foreignKey
      *
      * @return mixed
      */
@@ -114,9 +114,9 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param      $className
-     * @param      $columnToAverage
-     * @param null $foreignKey
+     * @param string $className
+     * @param string $columnToAverage
+     * @param null   $foreignKey
      *
      * @return mixed
      */
@@ -126,9 +126,9 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param      $className
-     * @param      $columnToAverage
-     * @param null $foreignKey
+     * @param string $className
+     * @param string $columnToAverage
+     * @param null   $foreignKey
      *
      * @return mixed
      */
@@ -138,9 +138,9 @@ trait AggregateRelationshipsTrait
     }
 
     /**
-     * @param      $className
-     * @param      $columnToAverage
-     * @param null $foreignKey
+     * @param string $className
+     * @param string $columnToAverage
+     * @param null   $foreignKey
      *
      * @return mixed
      */
