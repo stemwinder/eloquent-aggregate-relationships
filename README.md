@@ -8,7 +8,7 @@ This laravel package provides tools for easily creating aggregate relationships 
 
 The primary issue is that eloquent out of the box won't let you eager-load and count a relationship without loading all of actual records of that relationship.
 
-## Proposed sytnax
+## Proposed syntax
 
 ```php
 public function commentsCount() {
@@ -42,4 +42,3 @@ public function commentsCount()
     ->groupBy('post_id');
 }
 ```
-
