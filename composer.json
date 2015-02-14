@@ -24,11 +24,16 @@
     },
     "require-dev": {
         "phpspec/phpspec": "~2.0",
-        "illuminate/database": "5.0.*"
+        "illuminate/database": "5.0.*",
+        "phpunit/phpunit": "~4.4"
     },
     "autoload": {
         "psr-4": {
             "AndyFleming\\EloquentAggregateRelationships\\": "src/"
-        }
+        },
+        "classmap": [
+            "tests/FunctionalTestCase.php",
+            "tests/AggregateRelationshipModelStub.php"
+        ]
     }
 }

@@ -1,5 +1,9 @@
 <?php namespace AndyFleming\EloquentAggregateRelationships;
 
+/**
+ * Class AggregateRelationshipsTrait
+ * @package AndyFleming\EloquentAggregateRelationships
+ */
 trait AggregateRelationshipsTrait
 {
 
@@ -24,7 +28,7 @@ trait AggregateRelationshipsTrait
      *
      * @return string
      */
-    private function generateAggregateAlias($className, $aggregateType)
+    public function generateAggregateAlias($className, $aggregateType)
     {
         $className = $this->stripNamespace($className);
 
@@ -34,7 +38,7 @@ trait AggregateRelationshipsTrait
     /**
      * @return string
      */
-    private function generateForeignKey()
+    public function generateForeignKey()
     {
         $className = get_called_class();
         $className = $this->stripNamespace($className);
@@ -60,7 +64,7 @@ trait AggregateRelationshipsTrait
         ];
 
         if (!in_array($aggregateType, $validTypes)) {
-            throw new InvalidAggregateTypeException('');
+            throw new InvalidAggregateTypeException();
         }
     }
 
@@ -73,16 +77,16 @@ trait AggregateRelationshipsTrait
      * @return mixed
      * @throws InvalidAggregateTypeException
      */
-    private function aggregateHasMany($aggregateType, $className, $aggregateTargetColumn, $foreignKey = null)
+    public function aggregateHasMany($aggregateType, $className, $aggregateTargetColumn, $foreignKey = null)
     {
         $this->validateType($aggregateType);
 
         $resultAlias = $this->generateAggregateAlias($className, $aggregateType);
         $foreignKey = ($foreignKey) ?: $this->generateForeignKey();
 
-        return $this->hasOne($className)
-            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias,[$foreignKey, $aggregateTargetColumn])
-            ->groupBy($foreignKey);
+//        return $this->hasOne($className)
+//            ->selectRaw('?, ' . $aggregateType . '(?) as '.$resultAlias, [$foreignKey, $aggregateTargetColumn])
+//            ->groupBy($foreignKey);
     }
 
     /**
@@ -92,7 +96,7 @@ trait AggregateRelationshipsTrait
      *
      * @return mixed
      */
-    protected function countHasMany($className, $columnToCount = '*', $foreignKey = null)
+    public function countHasMany($className, $columnToCount = '*', $foreignKey = null)
     {
         return $this->aggregateHasMany('count', $className, $columnToCount, $foreignKey);
     }
