@@ -1,6 +1,6 @@
 # Eloquent Aggregate Relationships
 
-[![Code Climate](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships/badges/gpa.svg)](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships)
+[![Build Status](https://travis-ci.org/andyfleming/eloquent-aggregate-relationships.svg?branch=master)](https://travis-ci.org/andyfleming/eloquent-aggregate-relationships) [![Code Climate](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships/badges/gpa.svg)](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships)
 
 ## *Work-in-progress*
 
