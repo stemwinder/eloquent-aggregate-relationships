@@ -3,6 +3,11 @@
 trait AggregateRelationshipsTrait
 {
 
+    /**
+     * @param $className
+     *
+     * @return mixed
+     */
     private function stripNamespace($className)
     {
         if (strpos($className, '\\') !== false) {
@@ -13,14 +18,23 @@ trait AggregateRelationshipsTrait
         return $className;
     }
 
-    public function generateAggregateAlias($className, $aggregateType)
+    /**
+     * @param $className
+     * @param $aggregateType
+     *
+     * @return string
+     */
+    private function generateAggregateAlias($className, $aggregateType)
     {
         $className = $this->stripNamespace($className);
 
         return snake_case($className) . '_' . $aggregateType;
     }
 
-    public function generateForeignKey()
+    /**
+     * @return string
+     */
+    private function generateForeignKey()
     {
         $className = get_called_class();
         $className = $this->stripNamespace($className);
@@ -30,7 +44,12 @@ trait AggregateRelationshipsTrait
         return snake_case($className);
     }
 
-    public function validateType($aggregateType)
+    /**
+     * @param $aggregateType
+     *
+     * @throws InvalidAggregateTypeException
+     */
+    private function validateType($aggregateType)
     {
         $validTypes = [
             'avg',
@@ -45,6 +64,15 @@ trait AggregateRelationshipsTrait
         }
     }
 
+    /**
+     * @param      $aggregateType
+     * @param      $className
+     * @param      $aggregateTargetColumn
+     * @param null $foreignKey
+     *
+     * @return mixed
+     * @throws InvalidAggregateTypeException
+     */
     private function aggregateHasMany($aggregateType, $className, $aggregateTargetColumn, $foreignKey = null)
     {
         $this->validateType($aggregateType);
@@ -61,7 +89,6 @@ trait AggregateRelationshipsTrait
      * @param        $className
      * @param string $columnToCount
      * @param null   $foreignKey
-     * @param null   $resultAlias
      *
      * @return mixed
      */
@@ -74,7 +101,6 @@ trait AggregateRelationshipsTrait
      * @param      $className
      * @param      $columnToAverage
      * @param null $foreignKey
-     * @param null $resultAlias
      *
      * @return mixed
      */
