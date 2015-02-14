@@ -1,5 +1,7 @@
 # Eloquent Aggregate Relationships
 
+[![Code Climate](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships/badges/gpa.svg)](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships)
+
 ## *Work-in-progress*
 
 This laravel package provides tools for easily creating aggregate relationships that can be eager-loaded.
