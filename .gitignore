@@ -1,5 +1,4 @@
 # Created by .gitignore support plugin (hsz.mobi)
-.DS_Store
 .idea/
 vendor/
 composer.lock
