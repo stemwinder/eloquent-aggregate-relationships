@@ -2,6 +2,7 @@
     "name": "andyfleming/eloquent-aggregate-relationships",
     "type": "library",
     "description": "Provides aggregate relationship helpers.",
+    "license": "MIT",
     "keywords": [
         "eloquent",
         "laravel",
