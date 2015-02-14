@@ -40,6 +40,7 @@ class AggregateRelationshipsTraitSpec extends ObjectBehavior
         $this->generateAggregateAlias('Blog\ArticleComment', 'count')->shouldReturn('article_comment_count');
     }
 
+    /*
     public function it_should_throw_an_exception_if_the_type_is_unsupported()
     {
         //$this->setupEloquentConnection();
@@ -52,5 +53,6 @@ class AggregateRelationshipsTraitSpec extends ObjectBehavior
     {
         //$this->countHasMany('Class', '*')->shouldReturn(true);
     }
+    */
 
 }
