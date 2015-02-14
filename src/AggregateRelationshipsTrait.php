@@ -47,7 +47,7 @@ trait AggregateRelationshipsTrait
         }
     }
 
-    private function aggregateHasMany($aggregateType, $className, $foreignKey = null, $resultAlias = null, $aggregateTargetColumn)
+    private function aggregateHasMany($aggregateType, $className, $aggregateTargetColumn, $foreignKey = null, $resultAlias = null)
     {
         $this->validateType($aggregateType);
 
@@ -61,29 +61,67 @@ trait AggregateRelationshipsTrait
 
     /**
      * @param        $className
+     * @param string $columnToCount
      * @param null   $foreignKey
-     * @param null   $countFieldName
-     * @param string $columnToCount - The column you want to count the distinct values in
+     * @param null   $resultAlias
      *
      * @return mixed
      */
-    protected function countHasMany($className, $columnToCount = '*', $foreignKey = null, $countFieldName = null)
+    protected function countHasMany($className, $columnToCount = '*', $foreignKey = null, $resultAlias = null)
     {
-
-        return $this->aggregateHasMany('count', $className, $foreignKey, $countFieldName, $columnToCount);
-
+        return $this->aggregateHasMany('count', $className, $columnToCount, $foreignKey, $resultAlias);
     }
 
-    protected function averageHasMany($className, $columnToAverage, $foreignKey = null, $countFieldName = null)
+    /**
+     * @param      $className
+     * @param      $columnToAverage
+     * @param null $foreignKey
+     * @param null $resultAlias
+     *
+     * @return mixed
+     */
+    protected function averageHasMany($className, $columnToAverage, $foreignKey = null, $resultAlias = null)
     {
-        return $this->aggregateHasMany('avg', $className, $foreignKey, $countFieldName, $columnToAverage);
+        return $this->aggregateHasMany('avg', $className, $columnToAverage, $foreignKey, $resultAlias);
     }
 
-    // min()
+    /**
+     * @param      $className
+     * @param      $columnToAverage
+     * @param null $foreignKey
+     * @param null $resultAlias
+     *
+     * @return mixed
+     */
+    protected function minHasMany($className, $columnToAverage, $foreignKey = null, $resultAlias = null)
+    {
+        return $this->aggregateHasMany('min', $className, $columnToAverage, $foreignKey, $resultAlias);
+    }
 
-    // max()
+    /**
+     * @param      $className
+     * @param      $columnToAverage
+     * @param null $foreignKey
+     * @param null $resultAlias
+     *
+     * @return mixed
+     */
+    protected function maxHasMany($className, $columnToAverage, $foreignKey = null, $resultAlias = null)
+    {
+        return $this->aggregateHasMany('max', $className, $columnToAverage, $foreignKey, $resultAlias);
+    }
 
-    // sum()
-
+    /**
+     * @param      $className
+     * @param      $columnToAverage
+     * @param null $foreignKey
+     * @param null $resultAlias
+     *
+     * @return mixed
+     */
+    protected function sumHasMany($className, $columnToAverage, $foreignKey = null, $resultAlias = null)
+    {
+        return $this->aggregateHasMany('sum', $className, $columnToAverage, $foreignKey, $resultAlias);
+    }
 
 }
