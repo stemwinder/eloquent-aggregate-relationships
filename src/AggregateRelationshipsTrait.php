@@ -1,7 +1,5 @@
 <?php namespace AndyFleming\EloquentAggregateRelationships;
 
-use Illuminate\Database\Query\Builder;
-
 trait AggregateRelationshipsTrait
 {
 
