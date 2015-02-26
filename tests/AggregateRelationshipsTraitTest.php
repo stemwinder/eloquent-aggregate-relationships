@@ -32,5 +32,6 @@ class AggregateRelationshipsTraitTest extends FunctionalTestCase
 
         //$this->assertTrue($mock->concreteMethod());
 
+        
     }
 }
