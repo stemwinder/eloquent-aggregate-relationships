@@ -24,7 +24,7 @@ class AggregateRelationshipsTraitTest extends FunctionalTestCase
 
     public function test_instantiation_of_mock()
     {
-        $mock = $this->getMockForTrait('AndyFleming\EloquentAggregateRelationships\AggregateRelationshipsTrait');
+        $mock = $this->getMockForTrait('EloquentAggregateRelationships\AggregateRelationshipsTrait');
 
 //        $mock->expects($this->any())
 //            ->method('countHasMany')

@@ -1,7 +1,5 @@
 # Eloquent Aggregate Relationships
 
-[![Build Status](https://travis-ci.org/andyfleming/eloquent-aggregate-relationships.svg?branch=master)](https://travis-ci.org/andyfleming/eloquent-aggregate-relationships) [![Code Climate](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships/badges/gpa.svg)](https://codeclimate.com/github/andyfleming/eloquent-aggregate-relationships) [![Codacy Badge](https://www.codacy.com/project/badge/fa2259e088d6464f8aa676f2c7201913)](https://www.codacy.com/public/andy/eloquent-aggregate-relationships) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andyfleming/eloquent-aggregate-relationships/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andyfleming/eloquent-aggregate-relationships/?branch=master) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/7693f473-85ba-491e-9c0f-64de9985d1c6/mini.png)](https://insight.sensiolabs.com/projects/7693f473-85ba-491e-9c0f-64de9985d1c6)
-
 ## *Work-in-progress*
 
 This laravel package provides tools for easily creating aggregate relationships that can be eager-loaded.

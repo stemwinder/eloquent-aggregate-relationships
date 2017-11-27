@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\AndyFleming\EloquentAggregateRelationships;
+namespace spec\EloquentAggregateRelationships;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use PhpSpec\ObjectBehavior;
@@ -27,7 +27,7 @@ class AggregateRelationshipsTraitSpec extends ObjectBehavior
 
     function let()
     {
-        $this->beAnInstanceOf('AndyFleming\EloquentAggregateRelationships\Stubs\AggregateRelationshipModel');
+        $this->beAnInstanceOf('EloquentAggregateRelationships\Stubs\AggregateRelationshipModel');
     }
 
     public function it_should_return_snaked_case_name_with_aggregate_type()
@@ -45,7 +45,7 @@ class AggregateRelationshipsTraitSpec extends ObjectBehavior
     {
         //$this->setupEloquentConnection();
 
-        //$this->shouldThrow('AndyFleming\EloquentAggregateRelationships\InvalidAggregateTypeException()');
+        //$this->shouldThrow('EloquentAggregateRelationships\InvalidAggregateTypeException()');
         //$this->aggregateHasMany('badtype', 'Class', '*');
     }
 

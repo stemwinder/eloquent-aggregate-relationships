@@ -1,8 +1,8 @@
-<?php namespace AndyFleming\EloquentAggregateRelationships;
+<?php namespace EloquentAggregateRelationships;
 
 /**
  * Class AggregateRelationshipsTrait
- * @package AndyFleming\EloquentAggregateRelationships
+ * @package EloquentAggregateRelationships
  */
 trait AggregateRelationshipsTrait
 {

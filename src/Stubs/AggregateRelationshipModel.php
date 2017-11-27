@@ -1,8 +1,8 @@
 <?php
 
-namespace AndyFleming\EloquentAggregateRelationships\Stubs;
+namespace EloquentAggregateRelationships\Stubs;
 
-use AndyFleming\EloquentAggregateRelationships\AggregateRelationshipsTrait;
+use EloquentAggregateRelationships\AggregateRelationshipsTrait;
 use Illuminate\Database\Eloquent\Model;
 
 final class AggregateRelationshipModel extends Model

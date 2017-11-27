@@ -1,6 +1,6 @@
 <?php
 
-use AndyFleming\EloquentAggregateRelationships\AggregateRelationshipsTrait;
+use EloquentAggregateRelationships\AggregateRelationshipsTrait;
 use Illuminate\Database\Eloquent\Model;
 
 final class AggregateRelationshipModelStub extends Model

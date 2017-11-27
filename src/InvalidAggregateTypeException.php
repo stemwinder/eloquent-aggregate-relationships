@@ -1,3 +1,5 @@
-<?php namespace AndyFleming\EloquentAggregateRelationships;
+<?php
+
+namespace EloquentAggregateRelationships;
 
 class InvalidAggregateTypeException extends \Exception {}

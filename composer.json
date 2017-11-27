@@ -1,5 +1,5 @@
 {
-    "name": "andyfleming/eloquent-aggregate-relationships",
+    "name": "stemwinder/eloquent-aggregate-relationships",
     "type": "library",
     "description": "Provides aggregate relationship helpers.",
     "license": "MIT",
@@ -12,7 +12,7 @@
         "sum",
         "average"
     ],
-    "homepage": "http://github.com/andyfleming/eloquent-aggregate-relationships",
+    "homepage": "http://github.com/stemwinder/eloquent-aggregate-relationships",
     "authors": [
         {
             "name": "Andy Fleming",
@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "AndyFleming\\EloquentAggregateRelationships\\": "src/"
+            "EloquentAggregateRelationships\\": "src/"
         },
         "classmap": [
             "tests/FunctionalTestCase.php",

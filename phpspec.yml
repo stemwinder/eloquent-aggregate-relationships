@@ -1,4 +1,4 @@
 suites:
   eloquent_aggregate_relationships_suite:
-    namespace: AndyFleming\EloquentAggregateRelationships
-    psr4_prefix: AndyFleming\EloquentAggregateRelationships
+    namespace: EloquentAggregateRelationships
+    psr4_prefix: EloquentAggregateRelationships
